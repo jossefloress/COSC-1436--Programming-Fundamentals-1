@@ -1,0 +1,83 @@
+/*Assignment4: Asks the user for a number of a seconds and determines how many minutes, hours, and days it's equivalent to
+Author: Jose Flores
+Date: 06/12/2019*/
+
+
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int main()
+{
+	//Variables for user input
+	int seconds;
+
+	cout << "Enter a number of seconds:\n";
+	cin >> seconds;
+
+	//Constant variables for seconds per day, hour and minute
+	const int secondsPerMin = 60;
+	const int secondsPerHour = 3600;
+	const int secondsPerDay = 86400;
+	const int seconds2 = 1;
+
+
+	//If else loop 
+	if (seconds >= secondsPerDay)
+	{
+
+		cout << "Days in that many seconds: \n" << seconds / secondsPerDay << "\n";
+		if (seconds % secondsPerDay >= 3600)
+		{
+			cout << "Left over hours in that many seconds: \n" << (seconds % secondsPerDay) / secondsPerHour << "\n";
+			
+			if (seconds % secondsPerHour > 0)
+			{
+			cout << "Left over minutes in that many seconds \n" << ((seconds % secondsPerDay) % secondsPerHour) / secondsPerMin << "\n";
+			 
+			if (seconds % secondsPerMin)
+			{
+				cout << "Leftover seconds \n" << ((seconds % secondsPerDay) % secondsPerHour % secondsPerMin) / seconds2 << "\n";
+			}
+			}
+		}
+
+		else if (seconds % secondsPerHour > 0 &&  seconds % secondsPerHour <= 3600 )
+		{
+				cout << "Left over minutes in that many seconds \n" << ((seconds % secondsPerDay) % secondsPerHour) / secondsPerMin << "\n";
+		}
+		
+	}
+
+	else if (seconds >= secondsPerHour)
+	{
+		cout << "This is the number of hours in that many seconds: \n" << seconds / secondsPerHour << "\n";
+
+		if (seconds % secondsPerHour > 0)
+		{
+			cout << "Left over minutes in that many seconds \n" << ((seconds % secondsPerDay) % secondsPerHour) / secondsPerMin << "\n";
+
+			if (seconds % secondsPerMin)
+			{
+				cout << "Leftover seconds \n" << ((seconds % secondsPerHour) % secondsPerMin) / seconds2 << "\n";
+			}
+		}
+
+	}
+
+	else 
+	{
+		cout << "This is the number of minutes in that many seconds: \n" << seconds / secondsPerMin << "\n";
+
+		if (seconds % secondsPerMin)
+		{
+			cout << "Leftover seconds \n" << (seconds % secondsPerMin) / seconds2 << "\n";
+		}
+
+	}
+
+
+	system("pause");
+	return 0;
+}
